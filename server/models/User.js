@@ -13,8 +13,12 @@ const secrets = require('../config/secrets')
  */
 
 class User {
-  static all() {
-    return db_client('users')
+  static all(department) {
+    if (department) {
+      return db_client('users').where({ department: department })
+    } else {
+      return db_client('users')
+    }
   }
 
   static find(filter) {

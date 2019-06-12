@@ -50,7 +50,14 @@ class UsersController {
 
   static async index(req, res) {
     try {
-      let users = await User.all()
+      console.log('user', req.user)
+      let users
+
+      if (req.user.department) {
+        users = await User.all(req.user.department)
+      } else {
+        users = await User.all()
+      }
 
       res.status(200).json(users)
     } catch(err) {
