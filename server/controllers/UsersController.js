@@ -49,7 +49,14 @@ class UsersController {
   }
 
   static async index(req, res) {
-    res.sendStatus(200)
+    try {
+      let users = await User.all()
+
+      res.status(200).json(users)
+    } catch(err) {
+      console.error(err)
+      res.status(500).json({ errors: { message: 'Server error' } })
+    }
   }
 }
 

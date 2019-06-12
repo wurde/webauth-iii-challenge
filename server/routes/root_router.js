@@ -5,6 +5,7 @@
  */
 
 const express = require('express')
+const auth_user = require('../middleware/auth_user')
 const RootController = require('../controllers/RootController')
 const UsersController = require('../controllers/UsersController')
 
@@ -44,6 +45,7 @@ router.route('/login')
  */
 
 router.route('/users')
+  .all(auth_user)
   .get(UsersController.index)
 
 /**
