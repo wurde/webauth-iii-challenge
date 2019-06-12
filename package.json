@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/wurde/webauth-iii-challenge/issues"
   },
-  "homepage": "https://github.com/wurde/webauth-iii-challenge#readme"
+  "homepage": "https://github.com/wurde/webauth-iii-challenge#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.17.5",
+    "sqlite3": "^4.0.8"
+  }
 }
