@@ -13,13 +13,17 @@
     "url": "git+https://github.com/wurde/webauth-iii-challenge.git"
   },
   "keywords": [],
-  "author": ["Lambda School", "Andy Bettisworth"],
+  "author": [
+    "Lambda School",
+    "Andy Bettisworth"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wurde/webauth-iii-challenge/issues"
   },
   "homepage": "https://github.com/wurde/webauth-iii-challenge#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
