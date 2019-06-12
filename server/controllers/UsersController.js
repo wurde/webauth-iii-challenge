@@ -29,7 +29,23 @@ class UsersController {
   }
 
   static async login(req, res) {
-    res.sendStatus(200)
+    try {
+      let user = await User.find({ username: req.body.username })
+
+      if (user && bcrypt.compareSync(req.body.password, user.password_hash)) {
+        const token = await User.generate_token(user)
+
+        res.status(200).json({
+          message: `Welcome ${user.username}!`,
+          token
+        })
+      } else {
+        res.status(401).json({ message: 'Invalid Credentials' });
+      }
+    } catch(err) {
+      console.error(err)
+      res.status(500).json({ errors: { message: 'Server error' } })
+    }
   }
 
   static async index(req, res) {
