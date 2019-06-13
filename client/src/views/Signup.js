@@ -49,12 +49,12 @@ class Signup extends Component {
               <form onSubmit={this.handleOnSubmit}>
                 <div className="form-group">
                   <label htmlFor="username">Username</label>
-                  <input id="username" type="text" required id="input-username" label="username" onChange={this.handleOnChange} className="form-control" autofocus="true" />
+                  <input id="username" type="text" required id="input-username" name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" autoFocus={true} />
                 </div>
 
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
-                  <input id="password" type="password" required id="input-password" label="password" onChange={this.handleOnChange} className="form-control" />
+                  <input id="password" type="password" required id="input-password" name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" />
                 </div>
 
                 <button type="submit" className="btn btn-block btn-primary">

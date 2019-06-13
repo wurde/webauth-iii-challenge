@@ -33,9 +33,11 @@ class UsersController {
   static async login(req, res) {
     try {
       let user = await User.find({ username: req.body.username })
+      console.log('login user', user)
 
       if (user && bcrypt.compareSync(req.body.password, user.password_hash)) {
         const token = await User.generate_token(user)
+        console.log('login token', token)
 
         res.status(200).json({
           message: `Welcome ${user.username}!`,
@@ -52,7 +54,6 @@ class UsersController {
 
   static async index(req, res) {
     try {
-      console.log('user', req.user)
       let users
 
       if (req.user.department) {
