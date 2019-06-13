@@ -18,10 +18,10 @@ class UsersList extends Component {
   }
 
   onComponentDidMount() {
+    console.log('onComponentDidMount')
     const endpoint = '/users'
 
-    axios
-      .get(endpoint)
+    axios.get(endpoint)
       .then(res => {
         this.setState(() => ({ users: res.data }))
       })
