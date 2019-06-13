@@ -6,6 +6,7 @@
 
 import Signin from './Signin'
 import Signup from './Signup'
+import UsersList from './UsersList'
 
 /**
  * Export routers
@@ -14,4 +15,5 @@ import Signup from './Signup'
 export {
   Signin,
   Signup,
+  UsersList,
 }
