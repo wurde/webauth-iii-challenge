@@ -21,7 +21,9 @@ class UsersController {
         password_hash: password_hash
       })
 
-      res.status(201).json(user)
+      const token = await User.generate_token(user)
+
+      res.status(201).json({user, token})
     } catch(err) {
       console.error(err)
       res.status(500).json({ errors: { message: 'Server error' } })
