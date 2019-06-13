@@ -5,6 +5,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { SigninStyle } from './styles/index'
+import axios from 'axios'
 
 /**
  * Define component
@@ -21,7 +22,16 @@ class Signin extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault()
-    console.log('Submit Signin')
+
+    axios.post('http://localhost:8080/login', this.state)
+      .then(res => {
+        console.log('res.data', res.data)
+        localStorage.setItem('jwt', res.data.token)
+        this.props.history.push('/users')
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 
   handleOnChange = (event) => {
@@ -48,7 +58,7 @@ class Signin extends Component {
                   <input id="password" type="password" required id="input-password" label="password" onChange={this.handleOnChange} className="form-control" />
                 </div>
 
-                <button type="submit">
+                <button type="submit" className="btn btn-block btn-primary">
                   Continue
                 </button>
               </form>
