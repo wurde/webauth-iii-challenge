@@ -1,0 +1,36 @@
+{
+  "name": "webauth-iii-challenge",
+  "version": "0.1.0",
+  "description": "WEB AUTH III Challenge",
+  "main": "server/app.js",
+  "private": true,
+  "scripts": {
+    "start": "node server/app.js",
+    "start:dev": "nodemon server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wurde/webauth-iii-challenge.git"
+  },
+  "keywords": [],
+  "author": [
+    "Lambda School",
+    "Andy Bettisworth"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wurde/webauth-iii-challenge/issues"
+  },
+  "homepage": "https://github.com/wurde/webauth-iii-challenge#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.17.5",
+    "sqlite3": "^4.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
