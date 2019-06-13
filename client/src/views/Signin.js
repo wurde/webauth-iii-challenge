@@ -25,7 +25,6 @@ class Signin extends Component {
 
     axios.post('http://localhost:8080/login', this.state)
       .then(res => {
-        console.log('res.data', res.data)
         localStorage.setItem('jwt', res.data.token)
         this.props.history.push('/users')
       })
@@ -50,7 +49,7 @@ class Signin extends Component {
               <form onSubmit={this.handleOnSubmit}>
                 <div className="form-group">
                   <label htmlFor="username">Username</label>
-                  <input id="username" type="text" required id="input-username" label="username" onChange={this.handleOnChange} className="form-control" />
+                  <input id="username" type="text" required id="input-username" label="username" onChange={this.handleOnChange} className="form-control" autofocus="true" />
                 </div>
 
                 <div className="form-group">
