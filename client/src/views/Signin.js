@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import { SigninStyle } from './styles/index'
 
 /**
@@ -37,13 +38,24 @@ class Signin extends Component {
               <h3>Signin</h3>
 
               <form onSubmit={this.handleOnSubmit}>
-                <input id="username" type="text" required id="input-username" label="username" onChange={this.handleOnChange} />
-                <input id="password" type="password" required id="input-password" label="password" onChange={this.handleOnChange} />
+                <div className="form-group">
+                  <label htmlFor="username">Username</label>
+                  <input id="username" type="text" required id="input-username" label="username" onChange={this.handleOnChange} className="form-control" />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <input id="password" type="password" required id="input-password" label="password" onChange={this.handleOnChange} className="form-control" />
+                </div>
 
                 <button type="submit">
                   Continue
                 </button>
               </form>
+
+              <br/>
+
+              <p>I don't have an account: <NavLink to="/users/signup">Sign up</NavLink></p>
 
             </div>
           </div>
