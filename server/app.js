@@ -6,6 +6,7 @@
 
 const express = require('express')
 const helmet = require('helmet')
+const cors = require('cors')
 
 /**
  * Constants
@@ -23,6 +24,7 @@ const app = express()
  * Middleware
  */
 
+app.use(cors())
 app.use(helmet())
 app.use(express.json())
 

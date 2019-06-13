@@ -3,7 +3,9 @@
  */
 
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import { SigninStyle } from './styles/index'
+import axios from 'axios'
 
 /**
  * Define component
@@ -20,11 +22,22 @@ class Signin extends Component {
 
   handleOnSubmit = (event) => {
     event.preventDefault()
-    console.log('Submit Signin')
+
+    console.log('handleOnSubmit', this.state)
+    axios.post('http://localhost:8080/login', this.state)
+      .then(res => {
+        localStorage.setItem('jwt', res.data.token)
+        this.props.history.push('/users')
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 
   handleOnChange = (event) => {
     event.preventDefault()
+    console.log('event.target.name', event.target.name)
+    console.log('event.target.value', event.target.value)
     this.setState({ [event.target.name]: event.target.value })
   }
 
@@ -37,13 +50,24 @@ class Signin extends Component {
               <h3>Signin</h3>
 
               <form onSubmit={this.handleOnSubmit}>
-                <input id="username" type="text" required id="input-username" label="username" onChange={this.handleOnChange} />
-                <input id="password" type="password" required id="input-password" label="password" onChange={this.handleOnChange} />
+                <div className="form-group">
+                  <label htmlFor="username">Username</label>
+                  <input id="username" type="text" required id="input-username" name="username" value={this.state.username} onChange={this.handleOnChange} className="form-control" autoFocus={true} />
+                </div>
 
-                <button type="submit">
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <input id="password" type="password" required id="input-password" name="password" value={this.state.password} onChange={this.handleOnChange} className="form-control" />
+                </div>
+
+                <button type="submit" className="btn btn-block btn-primary">
                   Continue
                 </button>
               </form>
+
+              <br/>
+
+              <p>I don't have an account: <NavLink to="/users/signup">Sign up</NavLink></p>
 
             </div>
           </div>

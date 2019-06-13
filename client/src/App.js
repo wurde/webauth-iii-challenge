@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import { RootRouter, UsersRouter } from './routes/index'
+import { RootRouter } from './routes/index'
 
 /**
  * Import component styles
@@ -22,7 +22,6 @@ function App() {
   return (
     <BrowserRouter>
       <RootRouter mount="/" />
-      <UsersRouter mount="/users" />
     </BrowserRouter>
   )
 }

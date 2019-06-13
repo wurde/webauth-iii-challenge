@@ -21,7 +21,9 @@ class UsersController {
         password_hash: password_hash
       })
 
-      res.status(201).json(user)
+      const token = await User.generate_token(user)
+
+      res.status(201).json({user, token})
     } catch(err) {
       console.error(err)
       res.status(500).json({ errors: { message: 'Server error' } })
@@ -31,9 +33,11 @@ class UsersController {
   static async login(req, res) {
     try {
       let user = await User.find({ username: req.body.username })
+      console.log('login user', user)
 
       if (user && bcrypt.compareSync(req.body.password, user.password_hash)) {
         const token = await User.generate_token(user)
+        console.log('login token', token)
 
         res.status(200).json({
           message: `Welcome ${user.username}!`,
@@ -50,7 +54,6 @@ class UsersController {
 
   static async index(req, res) {
     try {
-      console.log('user', req.user)
       let users
 
       if (req.user.department) {
